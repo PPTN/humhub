@@ -96,6 +96,7 @@ class Invite extends \yii\db\ActiveRecord
     public function sendInviteMail()
     {
 
+		Yii::$app->language = \humhub\models\Setting::Get('defaultLanguage');
         // User requested registration link by its self
         if ($this->source == self::SOURCE_SELF) {
 
