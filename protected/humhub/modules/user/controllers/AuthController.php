@@ -70,7 +70,7 @@ class AuthController extends Controller
 
         if ($canRegister) {
 			if ($_SERVER['REMOTE_ADDR'] == $_SERVER['SERVER_ADDR']) $myemail = Yii::$app->request->get('m');
-            if ($registerModel->load(Yii::$app->request->post()) && $registerModel->validate() || $myemail) {
+            if ($registerModel->load(Yii::$app->request->post()) && $registerModel->validate() || isset($myemail)) {
 
 				if (!$myemail) $myemail = $registerModel->email;
                 $invite = \humhub\modules\user\models\Invite::findOne(['email' => $myemail]);
